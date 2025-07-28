@@ -5,49 +5,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Inspiration Décor</title>
   <style>
+    /* ==== Styles existants avec menu hamburger ==== */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      background: #f0e9e1; /* beige clair */
-      color: #3e2c41; /* mauve foncé */
+      background: #f0e9e1;
+      color: #3e2c41;
       line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
     }
     header {
-      background: #d1495b; /* rouge corail */
-      color: #f7f4f2; /* blanc cassé */
+      background: #d1495b;
+      color: #f7f4f2;
       padding: 1rem 2rem;
-      text-align: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     header h1 {
       margin: 0;
       font-weight: 700;
       letter-spacing: 2px;
+      font-size: 1.5rem;
+    }
+    /* Hamburger menu */
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 28px;
+      height: 22px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .menu-toggle span {
+      display: block;
+      height: 3px;
+      background: #f7f4f2;
+      border-radius: 3px;
+      transition: all 0.3s ease;
     }
     nav {
-      margin-top: 0.5rem;
+      position: fixed;
+      top: 60px;
+      left: -250px;
+      width: 220px;
+      background: #d1495b;
+      height: 100vh;
+      padding-top: 1rem;
+      transition: left 0.3s ease;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+      z-index: 9;
+      border-radius: 0 10px 10px 0;
+    }
+    nav.open {
+      left: 0;
     }
     nav a {
+      display: block;
+      padding: 1rem 2rem;
       color: #f7f4f2;
-      margin: 0 1rem;
       text-decoration: none;
       font-weight: 600;
+      border-bottom: 1px solid rgba(247,244,242,0.2);
+      transition: background 0.2s;
     }
     nav a:hover {
-      text-decoration: underline;
+      background: rgba(247,244,242,0.2);
     }
-    .section {
-      padding: 3rem 1rem;
+
+    main {
       max-width: 1100px;
-      margin: auto;
-      background: #f7f4f2; /* fond clair secondaire */
+      margin: 100px auto 50px auto; /* espace pour header fixe */
+      padding: 0 1rem;
+    }
+    /* Phrase d'accueil */
+    #welcome {
+      text-align: center;
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      color: #3e2c41;
+      font-weight: 600;
+    }
+
+    /* Section styles */
+    .section {
+      background: #f7f4f2;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(189,178,178,0.3); /* ombre douce */
+      box-shadow: 0 4px 8px rgba(189,178,178,0.3);
+      padding: 3rem 2rem;
+      margin-bottom: 2rem;
     }
     h2 {
       text-align: center;
       margin-bottom: 2rem;
       font-weight: 700;
     }
+
+    /* Catégories */
     .categories-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
@@ -92,7 +152,7 @@
     }
     .category-card a {
       font-weight: 700;
-      color: #d1495b; /* accent rouge corail */
+      color: #d1495b;
       text-decoration: none;
       margin-bottom: 1rem;
       display: inline-block;
@@ -100,6 +160,7 @@
     .category-card a:hover {
       text-decoration: underline;
     }
+
     /* Form styles */
     form {
       background: white;
@@ -147,6 +208,7 @@
       display: none;
       font-weight: 700;
     }
+
     /* FAQ */
     .faq-item {
       background: #fff;
@@ -160,6 +222,7 @@
       margin-bottom: 0.5rem;
       font-weight: 700;
     }
+
     /* Testimonials */
     .testimonial {
       background: #f7f4f2;
@@ -194,63 +257,16 @@
       text-align: right;
       color: #3e2c41;
     }
+
     /* Responsive */
     @media (max-width: 600px) {
-      nav a {
-        display: block;
-        margin: 0.5rem 0;
-      }
-      .category-card {
+      nav {
+        width: 100%;
         height: auto;
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        left: 0 !important;
       }
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <h1>Inspiration Décor</h1>
-  <nav>
-    <a href="#categories">Catégories</a>
-    <a href="#blog">Blog</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-    <a href="#newsletter">Newsletter</a>
-    <a href="#testimonials">Avis</a>
-  </nav>
-</header>
-
-<main>
-
-  <!-- Catégories avec images + vidéos -->
-  <section class="section" id="categories">
-    <h2>Nos catégories</h2>
-    <div class="categories-grid">
-
-      <!-- Miroirs -->
-      <div class="category-card">
-        <video src="https://cdn.videvo.net/videvo_files/video/free/2017-07/small_watermarked/170708_05_Flowers_4k_004_preview.webm" autoplay muted loop playsinline></video>
-        <h3>Miroirs</h3>
-        <p>Découvrez nos miroirs élégants pour illuminer vos espaces.</p>
-        <a href="https://amzn.eu/d/eS4Y7PU" target="_blank" rel="noopener noreferrer">Produit 1</a><br />
-        <a href="https://amzn.eu/d/d5yKfUZ" target="_blank" rel="noopener noreferrer">Produit 2</a><br />
-        <a href="https://amzn.eu/d/e4OKb89" target="_blank" rel="noopener noreferrer">Produit 3</a>
-      </div>
-
-      <!-- Tapis -->
-      <div class="category-card">
-        <video src="https://cdn.videvo.net/videvo_files/video/free/2019-02/small_watermarked/190122_06_Livingroom_preview.webm" autoplay muted loop playsinline></video>
-        <h3>Tapis</h3>
-        <p>Ajoutez de la chaleur et du confort avec nos tapis stylés.</p>
-        <a href="https://amzn.eu/d/8tFgDfd" target="_blank" rel="noopener noreferrer">Produit 1</a><br />
-        <a href="https://amzn.eu/d/9TYjWE5" target="_blank" rel="noopener noreferrer">Produit 2</a><br />
-        <a href="https://amzn.eu/d/cEBNT96" target="_blank" rel="noopener noreferrer">Produit 3</a>
-      </div>
-
-      <!-- Luminaires -->
-      <div class="category-card">
-        <video src="https://cdn.videvo.net/videvo_files/video/free/2017-08/small_watermarked/170821_10_WarmLight_004_preview.webm" autoplay muted loop playsinline></video>
-        <h3>Luminaires</h3>
-        <p>Éclairez votre intérieur avec nos luminaires modernes et chaleureux.</p>
-        <a href="https://amzn.eu/d/6bHCfm2" target="_blank" rel="noopener noreferrer">Produit 1</a><br />
-        <a href="https://amzn.eu/d/aXG8HG6" target="_blank" rel="noopener noreferrer
+      nav a {
+        display: inline-block

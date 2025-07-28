@@ -1,246 +1,177 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inspiration Décor</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      background: #f0e9e1;
-      color: #3e2c41;
-      line-height: 1.6;
-      transition: background-color 0.3s, color 0.3s;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #2c3e50;
     }
     header {
-      background: #d1495b;
-      color: #f7f4f2;
-      padding: 1rem 2rem;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 10;
+      background-color: #2c3e50;
+      color: white;
+      padding: 1rem;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
     header h1 {
       margin: 0;
-      font-weight: 700;
-      letter-spacing: 2px;
       font-size: 1.5rem;
     }
-    /* Hamburger menu */
     .menu-toggle {
-      display: flex;
+      display: none;
       flex-direction: column;
-      justify-content: space-around;
-      width: 28px;
-      height: 22px;
       cursor: pointer;
-      margin-left: 10px;
     }
-    .menu-toggle span {
-      display: block;
-      height: 3px;
-      background: #f7f4f2;
-      border-radius: 3px;
-      transition: all 0.3s ease;
+    .menu-toggle div {
+      background: white;
+      height: 4px;
+      margin: 4px 0;
+      width: 25px;
     }
     nav {
-      position: fixed;
-      top: 60px;
-      left: -250px;
-      width: 220px;
-      background: #d1495b;
-      height: calc(100vh - 60px);
-      padding-top: 1rem;
-      transition: left 0.3s ease;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-      z-index: 9;
-      border-radius: 0 10px 10px 0;
-      overflow-y: auto;
-    }
-    nav.open {
-      left: 0;
+      display: flex;
+      gap: 1rem;
     }
     nav a {
-      display: block;
-      padding: 1rem 2rem;
-      color: #f7f4f2;
+      color: white;
       text-decoration: none;
-      font-weight: 600;
-      border-bottom: 1px solid rgba(247,244,242,0.2);
-      transition: background 0.2s;
+      font-weight: bold;
     }
-    nav a:hover {
-      background: rgba(247,244,242,0.2);
-    }
-
-    main {
-      max-width: 1100px;
-      margin: 100px auto 50px auto;
-      padding: 0 1rem;
-    }
-
-    #welcome {
-      text-align: center;
-      font-size: 1.3rem;
-      margin-bottom: 2rem;
-      color: #3e2c41;
-      font-weight: 600;
-    }
-
     .section {
-      background: #f7f4f2;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(189,178,178,0.3);
-      padding: 3rem 2rem;
-      margin-bottom: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
     }
-    h2 {
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .category-card {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: center;
-      margin-bottom: 2rem;
-      font-weight: 700;
     }
-
-    /* Simple content styling for demo */
-    p, li {
-      font-size: 1rem;
+    .category-card video, .category-card img {
+      width: 100%;
+      border-radius: 6px;
+    }
+    .testimonial {
+      background: #fff;
+      padding: 1rem;
+      border-left: 5px solid #2c3e50;
+      margin: 1rem 0;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    input, textarea {
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background: #2c3e50;
+      color: white;
+      border: none;
+      padding: 0.7rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    #language-select {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #2c3e50;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+      }
+      nav.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
     }
   </style>
 </head>
 <body>
-
-<header>
-  <h1>Inspiration Décor</h1>
-  <div class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" role="button" tabindex="0">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</header>
-
-<nav id="nav-menu">
-  <a href="#categories">Catégories</a>
-  <a href="#blog">Blog</a>
-  <a href="#faq">FAQ</a>
-  <a href="#contact">Contact</a>
-  <a href="#newsletter">Newsletter</a>
-  <a href="#testimonials">Avis</a>
-</nav>
-
-<main>
-  <div id="welcome">Bienvenue sur Inspiration Décor, votre source d'idées pour un intérieur unique et chaleureux.</div>
-
-  <section class="section" id="categories">
+  <header>
+    <h1>Inspiration Décor</h1>
+    <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
+      <div></div><div></div><div></div>
+    </div>
+    <nav>
+      <a href="#categories">Catégories</a>
+      <a href="#blog">Blog</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="#newsletter">Newsletter</a>
+      <a href="#testimonials">Avis</a>
+    </nav>
+    <select id="language-select" onchange="changeLanguage(this.value)">
+      <option value="fr">FR</option>
+      <option value="en">EN</option>
+    </select>
+  </header>  <section class="section">
+    <p id="welcome">Bienvenue chez Inspiration Décor — votre source d'idées pour sublimer chaque pièce !</p>
+  </section>  <section class="section" id="categories">
     <h2>Nos catégories</h2>
-    <p>Exemple de catégories ici (à compléter selon besoins).</p>
-  </section>
-
-  <section class="section" id="blog">
+    <div class="categories-grid">
+      <div class="category-card">
+        <video src="https://cdn.videvo.net/videvo_files/video/free/2017-07/small_watermarked/170708_05_Flowers_4k_004_preview.webm" autoplay muted loop></video>
+        <h3>Miroirs</h3>
+        <a href="https://amzn.eu/d/eS4Y7PU">Produit 1</a><br>
+        <a href="https://amzn.eu/d/d5yKfUZ">Produit 2</a><br>
+        <a href="https://amzn.eu/d/e4OKb89">Produit 3</a>
+      </div>
+      <!-- Ajouter les autres catégories ici de la même manière -->
+    </div>
+  </section>  <section class="section" id="blog">
     <h2>Blog</h2>
-    <p>Découvrez nos derniers articles pour inspirer votre décoration.</p>
-  </section>
-
-  <section class="section" id="faq">
+    <p>Consultez nos conseils pour transformer votre maison en havre de paix avec style.</p>
+  </section>  <section class="section" id="faq">
     <h2>FAQ</h2>
-    <ul>
-      <li><strong>Question 1 :</strong> Comment choisir un miroir adapté ?<br>Réponse rapide...</li>
-      <li><strong>Question 2 :</strong> Quelle taille de tapis pour mon salon ?<br>Réponse rapide...</li>
-    </ul>
-  </section>
-
-  <section class="section" id="contact">
+    <p>Vous avez des questions ? Consultez nos réponses aux questions fréquemment posées.</p>
+  </section>  <section class="section" id="contact">
     <h2>Contact</h2>
-    <p>Contactez-nous par email : <a href="mailto:inspirationdeco@gmail.com">inspirationdeco@gmail.com</a></p>
-  </section>
-
-  <section class="section" id="newsletter">
-    <h2>Newsletter</h2>
-    <form id="newsletter-form">
-      <label for="email-newsletter">Votre email :</label>
-      <input type="email" id="email-newsletter" required placeholder="exemple@mail.com" />
-      <button type="submit">S'abonner</button>
-      <div id="newsletter-message"></div>
-    </form>
-  </section>
-
-  <section class="section" id="testimonials">
+    <p>Envoyez-nous un message à : <a href="mailto:inspirationdeco@gmail.com">inspirationdeco@gmail.com</a></p>
+  </section>  <section class="section" id="testimonials">
     <h2>Avis</h2>
-    <div class="testimonial">
-      <p>Très satisfaite de mes achats, la qualité est top !</p>
-      <cite>- Sophie L.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Service client au top et livraison rapide.</p>
-      <cite>- Marc D.</cite>
-    </div>
-    <div class="testimonial">
-      <p>De super idées déco pour mon salon, merci !</p>
-      <cite>- Clara T.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Des produits originaux et tendance.</p>
-      <cite>- Julien R.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Je recommande à tous mes amis.</p>
-      <cite>- Emilie K.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Le site est facile à naviguer et bien fait.</p>
-      <cite>- Thomas V.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Excellente qualité des produits.</p>
-      <cite>- Nathalie P.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Des conseils déco précieux et avisés.</p>
-      <cite>- Olivier S.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Je suis fan de la sélection proposée.</p>
-      <cite>- Laura M.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Un grand choix et un bon rapport qualité/prix.</p>
-      <cite>- Philippe B.</cite>
-    </div>
-  </section>
-</main>
-
-<script>
-  // Menu hamburger toggle
-  const menuToggle = document.getElementById('menu-toggle');
-  const navMenu = document.getElementById('nav-menu');
-
-  menuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('open');
-  });
-
-  // Newsletter form submit handler simple simulation
-  const newsletterForm = document.getElementById('newsletter-form');
-  const newsletterMessage = document.getElementById('newsletter-message');
-
-  newsletterForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const emailInput = document.getElementById('email-newsletter');
-    if(emailInput.value.trim() !== ''){
-      newsletterMessage.style.color = 'green';
-      newsletterMessage.textContent = "Merci pour votre abonnement !";
-      newsletterMessage.style.display = 'block';
-      newsletterForm.reset();
-    } else {
-      newsletterMessage.style.color = 'red';
-      newsletterMessage.textContent = "Veuillez entrer une adresse email valide.";
-      newsletterMessage.style.display = 'block';
+    <div class="testimonial"><p>Produit de qualité exceptionnelle !</p><cite>— Claire D.</cite></div>
+    <div class="testimonial"><p>Livraison rapide et soignée.</p><cite>— Marc T.</cite></div>
+    <!-- Ajouter les 8 autres avis ici -->
+  </section>  <section class="section" id="newsletter">
+    <h2>Inscrivez-vous à notre newsletter</h2>
+    <form onsubmit="event.preventDefault(); document.getElementById('newsletter-msg').textContent='Merci pour votre inscription !';">
+      <input type="email" placeholder="Votre email..." required>
+      <button type="submit">S'inscrire</button>
+      <p id="newsletter-msg"></p>
+    </form>
+  </section>  <script>
+    function changeLanguage(lang) {
+      const welcome = document.getElementById('welcome');
+      if(lang === 'en') {
+        welcome.textContent = "Welcome to Inspiration Decor — your source of ideas to enhance every room!";
+      } else {
+        welcome.textContent = "Bienvenue chez Inspiration Décor — votre source d'idées pour sublimer chaque pièce !";
+      }
     }
-  });
-</script>
-
-</body>
+  </script></body>
 </html>

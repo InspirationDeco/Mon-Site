@@ -4,141 +4,246 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Inspiration Décor</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script>
-    function switchLanguage(lang) {
-      document.querySelectorAll('[data-fr], [data-en]').forEach(el => {
-        el.textContent = el.getAttribute('data-' + lang);
-      });
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #2c3e50;
+      line-height: 1.6;
     }
-    window.onload = () => switchLanguage('fr'); // Langue par défaut
-  </script>
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    nav {
+      margin-top: 0.5rem;
+    }
+    nav a {
+      color: #f9f9f9;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .section {
+      padding: 3rem 1rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
+    }
+    .category-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+    .category-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .category-card img, .category-card video {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 2px solid #2c3e50;
+      transition: transform 0.3s ease;
+    }
+    .category-card:hover img,
+    .category-card:hover video {
+      transform: scale(1.05);
+    }
+    .category-card h3 {
+      margin: 1rem 0 0.5rem;
+    }
+    .category-card p {
+      margin: 0 1rem 1rem;
+      flex-grow: 1;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .category-card a {
+      font-weight: 700;
+      color: #2c3e50;
+      text-decoration: none;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    .category-card a:hover {
+      text-decoration: underline;
+    }
+    /* Form styles */
+    form {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: vertical;
+    }
+    button {
+      background-color: #2c3e50;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #1a2736;
+    }
+    #form-message, #newsletter-message {
+      text-align: center;
+      margin-top: 1rem;
+      color: green;
+      display: none;
+      font-weight: 700;
+    }
+    /* FAQ */
+    .faq-item {
+      background: #fff;
+      border-left: 4px solid #2c3e50;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-radius: 6px;
+    }
+    .faq-item h3 {
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    /* Testimonials */
+    .testimonial {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      margin: 1rem auto;
+      max-width: 700px;
+      padding: 1.5rem 2rem;
+      font-style: italic;
+      position: relative;
+    }
+    .testimonial::before {
+      content: '“';
+      font-size: 4rem;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      color: #2c3e50;
+      opacity: 0.15;
+    }
+    .testimonial p {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #444;
+    }
+    .testimonial cite {
+      display: block;
+      margin-top: 1rem;
+      font-style: normal;
+      font-weight: 700;
+      text-align: right;
+      color: #2c3e50;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+      .category-card {
+        height: auto;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="lang-toggle">
-    <button onclick="switchLanguage('fr')">FR</button> |
-    <button onclick="switchLanguage('en')">EN</button>
-  </div>
 
-  <header>
-    <h1 data-fr="Inspiration Décor" data-en="Decor Inspiration">Inspiration Décor</h1>
-    <nav>
-      <a href="#categories" data-fr="Catégories" data-en="Categories">Catégories</a> |
-      <a href="#testimonials" data-fr="Témoignages" data-en="Testimonials">Témoignages</a> |
-      <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
-    </nav>
-  </header>
+<header>
+  <h1>Inspiration Décor</h1>
+  <nav>
+    <a href="#categories">Catégories</a>
+    <a href="#blog">Blog</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <a href="#newsletter">Newsletter</a>
+    <a href="#testimonials">Avis</a>
+  </nav>
+</header>
 
-  <main>
-    <section id="categories">
-      <h2 data-fr="Nos catégories" data-en="Our Categories">Nos catégories</h2>
+<main>
 
-      <!-- Exemple d'une catégorie avec vidéo -->
-      <div class="category-block">
+  <!-- Catégories avec images + vidéos -->
+  <section class="section" id="categories">
+    <h2>Nos catégories</h2>
+    <div class="categories-grid">
+
+      <!-- Miroirs -->
+      <div class="category-card">
+        <video src="https://cdn.videvo.net/videvo_files/video/free/2017-07/small_watermarked/170708_05_Flowers_4k_004_preview.webm" autoplay muted loop playsinline></video>
         <h3>Miroirs</h3>
-        <video autoplay muted loop playsinline class="category-video">
-          <source src="https://cdn.videezy.com/system/resources/previews/000/054/370/original/modern-interior-luxury-living-room.mp4" type="video/mp4" />
-          <!-- Source d’exemple libre de droits -->
-        </video>
-        <div class="product-links">
-          <a href="https://amzn.eu/d/eS4Y7PU" target="_blank" rel="noopener">Voir produit 1</a>
-          <a href="https://amzn.eu/d/d5yKfUZ" target="_blank" rel="noopener">Voir produit 2</a>
-          <a href="https://amzn.eu/d/e4OKb89" target="_blank" rel="noopener">Voir produit 3</a>
-        </div>
+        <p>Découvrez nos miroirs élégants pour illuminer vos espaces.</p>
+        <a href="https://amzn.eu/d/eS4Y7PU" target="_blank" rel="noopener noreferrer">Produit 1</a><br />
+        <a href="https://amzn.eu/d/d5yKfUZ" target="_blank" rel="noopener noreferrer">Produit 2</a><br />
+        <a href="https://amzn.eu/d/e4OKb89" target="_blank" rel="noopener noreferrer">Produit 3</a>
       </div>
 
-      <div class="category-block">
+      <!-- Tapis -->
+      <div class="category-card">
+        <video src="https://cdn.videvo.net/videvo_files/video/free/2019-02/small_watermarked/190122_06_Livingroom_preview.webm" autoplay muted loop playsinline></video>
         <h3>Tapis</h3>
-        <video autoplay muted loop playsinline class="category-video">
-          <source src="https://cdn.videezy.com/system/resources/previews/000/054/347/original/cozy-home-decor.mp4" type="video/mp4" />
-        </video>
-        <div class="product-links">
-          <a href="https://amzn.eu/d/8tFgDfd" target="_blank" rel="noopener">Voir produit 1</a>
-          <a href="https://amzn.eu/d/9TYjWE5" target="_blank" rel="noopener">Voir produit 2</a>
-          <a href="https://amzn.eu/d/cEBNT96" target="_blank" rel="noopener">Voir produit 3</a>
-        </div>
+        <p>Ajoutez de la chaleur et du confort avec nos tapis stylés.</p>
+        <a href="https://amzn.eu/d/8tFgDfd" target="_blank" rel="noopener noreferrer">Produit 1</a><br />
+        <a href="https://amzn.eu/d/9TYjWE5" target="_blank" rel="noopener noreferrer">Produit 2</a><br />
+        <a href="https://amzn.eu/d/cEBNT96" target="_blank" rel="noopener noreferrer">Produit 3</a>
       </div>
 
-      <div class="category-block">
-        <h3>Luminaires</h3>
-        <video autoplay muted loop playsinline class="category-video">
-          <source src="https://cdn.videezy.com/system/resources/previews/000/054/393/original/minimalistic-lamp-light.mp4" type="video/mp4" />
-        </video>
-        <div class="product-links">
-          <a href="https://amzn.eu/d/6bHCfm2" target="_blank" rel="noopener">Voir produit 1</a>
-          <a href="https://amzn.eu/d/aXG8HG6" target="_blank" rel="noopener">Voir produit 2</a>
-          <a href="https://amzn.eu/d/d7dDEN6" target="_blank" rel="noopener">Voir produit 3</a>
-        </div>
-      </div>
-
-      <div class="category-block">
-        <h3>Coussins</h3>
-        <video autoplay muted loop playsinline class="category-video">
-          <source src="https://cdn.videezy.com/system/resources/previews/000/054/392/original/cozy-cushions.mp4" type="video/mp4" />
-        </video>
-        <div class="product-links">
-          <a href="https://amzn.eu/d/gExj27W" target="_blank" rel="noopener">Voir produit 1</a>
-          <a href="https://amzn.eu/d/9MBUXin" target="_blank" rel="noopener">Voir produit 2</a>
-          <a href="https://amzn.eu/d/jgHvQxM" target="_blank" rel="noopener">Voir produit 3</a>
-        </div>
-      </div>
-
-      <div class="category-block">
-        <h3>Vases</h3>
-        <video autoplay muted loop playsinline class="category-video">
-          <source src="https://cdn.videezy.com/system/resources/previews/000/054/395/original/minimalist-vase.mp4" type="video/mp4" />
-        </video>
-        <div class="product-links">
-          <a href="https://amzn.eu/d/by7cbLa" target="_blank" rel="noopener">Voir produit 1</a>
-          <a href="https://amzn.eu/d/b3T090V" target="_blank" rel="noopener">Voir produit 2</a>
-          <a href="https://amzn.eu/d/hNP8w0b" target="_blank" rel="noopener">Voir produit 3</a>
-        </div>
-      </div>
-
-      <div class="category-block">
-        <h3>Rideaux</h3>
-        <video autoplay muted loop playsinline class="category-video">
-          <source src="https://cdn.videezy.com/system/resources/previews/000/054/397/original/curtains-blowing.mp4" type="video/mp4" />
-        </video>
-        <div class="product-links">
-          <a href="https://amzn.eu/d/h1Hb1A8" target="_blank" rel="noopener">Voir produit 1</a>
-          <a href="https://amzn.eu/d/hQGGWVg" target="_blank" rel="noopener">Voir produit 2</a>
-          <a href="https://amzn.eu/d/hVirgww" target="_blank" rel="noopener">Voir produit 3</a>
-        </div>
-      </div>
-
-      <div class="category-block">
-        <h3>Plantes artificielles</h3>
-        <video autoplay muted loop playsinline class="category-video">
-          <source src="https://cdn.videezy.com/system/resources/previews/000/054/390/original/artificial-plant.mp4" type="video/mp4" />
-        </video>
-        <div class="product-links">
-          <a href="https://amzn.eu/d/0DOcszo" target="_blank" rel="noopener">Voir produit 1</a>
-          <a href="https://amzn.eu/d/bUcxPNd" target="_blank" rel="noopener">Voir produit 2</a>
-          <a href="https://amzn.eu/d/hwVFfpz" target="_blank" rel="noopener">Voir produit 3</a>
-        </div>
-      </div>
-
-      <div class="category-block">
-        <h3>Cadres photos</h3>
-        <video autoplay muted loop playsinline class="category-video">
-          <source src="https://cdn.videezy.com/system/resources/previews/000/054/396/original/photo-frames.mp4" type="video/mp4" />
-        </video>
-        <div class="product-links">
-          <a href="https://amzn.eu/d/iklazfs" target="_blank" rel="noopener">Voir produit 1</a>
-          <a href="https://amzn.eu/d/65Ctupt" target="_blank" rel="noopener">Voir produit 2</a>
-          <a href="https://amzn.eu/d/dCJKxqk" target="_blank" rel="noopener">Voir produit 3</a>
-        </div>
-      </div>
-
-      <div class="category-block">
-        <h3>Bougies parfumées</h3>
-        <video autoplay muted loop playsinline class="category-video">
-          <source src="https://cdn.videezy.com/system/resources/previews/000/054/399/original/candle-flame.mp4" type="video/mp4" />
-        </video>
-        <div class="product-links">
-          <a href="https://amzn.eu/d/iAhQyPc" target="_blank" rel="noopener">Voir produit 1</a>
-          <a href="https://amzn.eu/d/448qL7Z" target="_blank" rel="noopener">Voir produit 2</a>
-          <a href="https://amzn.eu/d/8TSP5H2" target="_blank" rel="noopener">Voir produit 3</a>
-        </div>
-      </div
+      <!-- Luminaires -->
+      <div class="category-card">
+        <video src="https://cdn.videvo.net/videvo_files/video/free/2017-08/small_watermarked/170821_10_WarmLight_004_preview.webm" autoplay muted loop playsinline></video>
+        <h3>Luminaires</h

@@ -1,1 +1,144 @@
-<!DOCTYPE html><html><head><title>Accueil</title><link rel='icon' href='favicon.ico'></head><body><h1>Bienvenue</h1></body></html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inspiration Décor</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    function switchLanguage(lang) {
+      document.querySelectorAll('[data-fr], [data-en]').forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+    }
+    window.onload = () => switchLanguage('fr'); // Langue par défaut
+  </script>
+</head>
+<body>
+  <div class="lang-toggle">
+    <button onclick="switchLanguage('fr')">FR</button> |
+    <button onclick="switchLanguage('en')">EN</button>
+  </div>
+
+  <header>
+    <h1 data-fr="Inspiration Décor" data-en="Decor Inspiration">Inspiration Décor</h1>
+    <nav>
+      <a href="#categories" data-fr="Catégories" data-en="Categories">Catégories</a> |
+      <a href="#testimonials" data-fr="Témoignages" data-en="Testimonials">Témoignages</a> |
+      <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="categories">
+      <h2 data-fr="Nos catégories" data-en="Our Categories">Nos catégories</h2>
+
+      <!-- Exemple d'une catégorie avec vidéo -->
+      <div class="category-block">
+        <h3>Miroirs</h3>
+        <video autoplay muted loop playsinline class="category-video">
+          <source src="https://cdn.videezy.com/system/resources/previews/000/054/370/original/modern-interior-luxury-living-room.mp4" type="video/mp4" />
+          <!-- Source d’exemple libre de droits -->
+        </video>
+        <div class="product-links">
+          <a href="https://amzn.eu/d/eS4Y7PU" target="_blank" rel="noopener">Voir produit 1</a>
+          <a href="https://amzn.eu/d/d5yKfUZ" target="_blank" rel="noopener">Voir produit 2</a>
+          <a href="https://amzn.eu/d/e4OKb89" target="_blank" rel="noopener">Voir produit 3</a>
+        </div>
+      </div>
+
+      <div class="category-block">
+        <h3>Tapis</h3>
+        <video autoplay muted loop playsinline class="category-video">
+          <source src="https://cdn.videezy.com/system/resources/previews/000/054/347/original/cozy-home-decor.mp4" type="video/mp4" />
+        </video>
+        <div class="product-links">
+          <a href="https://amzn.eu/d/8tFgDfd" target="_blank" rel="noopener">Voir produit 1</a>
+          <a href="https://amzn.eu/d/9TYjWE5" target="_blank" rel="noopener">Voir produit 2</a>
+          <a href="https://amzn.eu/d/cEBNT96" target="_blank" rel="noopener">Voir produit 3</a>
+        </div>
+      </div>
+
+      <div class="category-block">
+        <h3>Luminaires</h3>
+        <video autoplay muted loop playsinline class="category-video">
+          <source src="https://cdn.videezy.com/system/resources/previews/000/054/393/original/minimalistic-lamp-light.mp4" type="video/mp4" />
+        </video>
+        <div class="product-links">
+          <a href="https://amzn.eu/d/6bHCfm2" target="_blank" rel="noopener">Voir produit 1</a>
+          <a href="https://amzn.eu/d/aXG8HG6" target="_blank" rel="noopener">Voir produit 2</a>
+          <a href="https://amzn.eu/d/d7dDEN6" target="_blank" rel="noopener">Voir produit 3</a>
+        </div>
+      </div>
+
+      <div class="category-block">
+        <h3>Coussins</h3>
+        <video autoplay muted loop playsinline class="category-video">
+          <source src="https://cdn.videezy.com/system/resources/previews/000/054/392/original/cozy-cushions.mp4" type="video/mp4" />
+        </video>
+        <div class="product-links">
+          <a href="https://amzn.eu/d/gExj27W" target="_blank" rel="noopener">Voir produit 1</a>
+          <a href="https://amzn.eu/d/9MBUXin" target="_blank" rel="noopener">Voir produit 2</a>
+          <a href="https://amzn.eu/d/jgHvQxM" target="_blank" rel="noopener">Voir produit 3</a>
+        </div>
+      </div>
+
+      <div class="category-block">
+        <h3>Vases</h3>
+        <video autoplay muted loop playsinline class="category-video">
+          <source src="https://cdn.videezy.com/system/resources/previews/000/054/395/original/minimalist-vase.mp4" type="video/mp4" />
+        </video>
+        <div class="product-links">
+          <a href="https://amzn.eu/d/by7cbLa" target="_blank" rel="noopener">Voir produit 1</a>
+          <a href="https://amzn.eu/d/b3T090V" target="_blank" rel="noopener">Voir produit 2</a>
+          <a href="https://amzn.eu/d/hNP8w0b" target="_blank" rel="noopener">Voir produit 3</a>
+        </div>
+      </div>
+
+      <div class="category-block">
+        <h3>Rideaux</h3>
+        <video autoplay muted loop playsinline class="category-video">
+          <source src="https://cdn.videezy.com/system/resources/previews/000/054/397/original/curtains-blowing.mp4" type="video/mp4" />
+        </video>
+        <div class="product-links">
+          <a href="https://amzn.eu/d/h1Hb1A8" target="_blank" rel="noopener">Voir produit 1</a>
+          <a href="https://amzn.eu/d/hQGGWVg" target="_blank" rel="noopener">Voir produit 2</a>
+          <a href="https://amzn.eu/d/hVirgww" target="_blank" rel="noopener">Voir produit 3</a>
+        </div>
+      </div>
+
+      <div class="category-block">
+        <h3>Plantes artificielles</h3>
+        <video autoplay muted loop playsinline class="category-video">
+          <source src="https://cdn.videezy.com/system/resources/previews/000/054/390/original/artificial-plant.mp4" type="video/mp4" />
+        </video>
+        <div class="product-links">
+          <a href="https://amzn.eu/d/0DOcszo" target="_blank" rel="noopener">Voir produit 1</a>
+          <a href="https://amzn.eu/d/bUcxPNd" target="_blank" rel="noopener">Voir produit 2</a>
+          <a href="https://amzn.eu/d/hwVFfpz" target="_blank" rel="noopener">Voir produit 3</a>
+        </div>
+      </div>
+
+      <div class="category-block">
+        <h3>Cadres photos</h3>
+        <video autoplay muted loop playsinline class="category-video">
+          <source src="https://cdn.videezy.com/system/resources/previews/000/054/396/original/photo-frames.mp4" type="video/mp4" />
+        </video>
+        <div class="product-links">
+          <a href="https://amzn.eu/d/iklazfs" target="_blank" rel="noopener">Voir produit 1</a>
+          <a href="https://amzn.eu/d/65Ctupt" target="_blank" rel="noopener">Voir produit 2</a>
+          <a href="https://amzn.eu/d/dCJKxqk" target="_blank" rel="noopener">Voir produit 3</a>
+        </div>
+      </div>
+
+      <div class="category-block">
+        <h3>Bougies parfumées</h3>
+        <video autoplay muted loop playsinline class="category-video">
+          <source src="https://cdn.videezy.com/system/resources/previews/000/054/399/original/candle-flame.mp4" type="video/mp4" />
+        </video>
+        <div class="product-links">
+          <a href="https://amzn.eu/d/iAhQyPc" target="_blank" rel="noopener">Voir produit 1</a>
+          <a href="https://amzn.eu/d/448qL7Z" target="_blank" rel="noopener">Voir produit 2</a>
+          <a href="https://amzn.eu/d/8TSP5H2" target="_blank" rel="noopener">Voir produit 3</a>
+        </div>
+      </div

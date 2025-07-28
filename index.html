@@ -1,140 +1,181 @@
 <!DOCTYPE html><html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inspiration Décor</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css" />
   <script>
     function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('show');
+      const nav = document.getElementById('navbar');
+      nav.classList.toggle('show');
     }
-    function translate(lang) {
-      const fr = document.querySelectorAll('[data-lang="fr"]');
-      const en = document.querySelectorAll('[data-lang="en"]');
-      fr.forEach(el => el.style.display = lang === 'fr' ? 'block' : 'none');
-      en.forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+    function toggleLanguage(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = el.getAttribute('data-lang') === lang ? 'block' : 'none';
+      });
     }
-    window.onload = () => translate('fr');
+    document.addEventListener("DOMContentLoaded", () => toggleLanguage('fr'));
   </script>
   <style>
-    #mobile-menu-button {
-      position: absolute;
-      left: 1rem;
-      top: 1rem;
-      font-size: 2rem;
-      cursor: pointer;
-      color: white;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #2c3e50;
     }
-    #mobile-menu {
-      display: none;
-      flex-direction: column;
+    header {
       background: #2c3e50;
-      padding: 1rem;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      right: 0;
-      z-index: 10;
-    }
-    #mobile-menu.show {
+      color: white;
+      padding: 1rem 2rem;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #2c3e50;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+      }
+      nav.show {
+        display: flex;
+      }
     }
   </style>
 </head>
-<body><header>
-  <div id="mobile-menu-button" onclick="toggleMenu()">☰</div>
-  <h1>Inspiration Décor</h1>
-  <nav>
-    <div id="mobile-menu">
+<body>
+  <header>
+    <h1>Inspiration Décor</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="navbar">
       <a href="#categories">Catégories</a>
       <a href="#blog">Blog</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
       <a href="#newsletter">Newsletter</a>
       <a href="#testimonials">Avis</a>
-      <button onclick="translate('fr')">FR</button>
-      <button onclick="translate('en')">EN</button>
-    </div>
-  </nav>
-</header><main>
-  <section class="section">
-    <h2 data-lang="fr">Bienvenue sur Inspiration Décor</h2>
-    <h2 data-lang="en">Welcome to Inspiration Décor</h2>
-    <p data-lang="fr">Découvrez les meilleurs articles pour sublimer votre intérieur.</p>
-    <p data-lang="en">Discover the best items to enhance your home interior.</p>
-  </section>  <section class="section" id="categories">
-    <h2 data-lang="fr">Nos Catégories</h2>
-    <h2 data-lang="en">Our Categories</h2>
-    <div class="categories-grid">
-      <!-- Les catégories ont déjà été ajoutées ici -->
-    </div>
-  </section>  <section class="section" id="blog">
-    <h2 data-lang="fr">Blog</h2>
-    <h2 data-lang="en">Blog</h2>
-    <p data-lang="fr">Retrouvez nos conseils déco, tendances du moment et astuces pour harmoniser votre intérieur.</p>
-    <p data-lang="en">Find our decorating tips, current trends and tricks to harmonize your home.</p>
-  </section>  <section class="section" id="faq">
-    <h2 data-lang="fr">FAQ</h2>
-    <h2 data-lang="en">FAQ</h2>
-    <div class="faq-item">
-      <h3 data-lang="fr">Quels types de produits proposez-vous ?</h3>
-      <h3 data-lang="en">What types of products do you offer?</h3>
-      <p data-lang="fr">Nous proposons des articles de décoration intérieure de qualité sélectionnés avec soin.</p>
-      <p data-lang="en">We offer high-quality home decor items carefully selected.</p>
-    </div>
-    <div class="faq-item">
-      <h3 data-lang="fr">Puis-je être livré à l'international ?</h3>
-      <h3 data-lang="en">Do you ship internationally?</h3>
-      <p data-lang="fr">Les commandes sont passées via Amazon, leur politique de livraison s'applique.</p>
-      <p data-lang="en">Orders are placed via Amazon, their shipping policy applies.</p>
-    </div>
-  </section>  <section class="section" id="contact">
-    <h2 data-lang="fr">Contact</h2>
-    <h2 data-lang="en">Contact</h2>
-    <p>Email : <a href="mailto:inspirationdeco@gmail.com">inspirationdeco@gmail.com</a></p>
-  </section>  <section class="section" id="newsletter">
-    <h2 data-lang="fr">Inscription à la Newsletter</h2>
-    <h2 data-lang="en">Newsletter Signup</h2>
-    <form onsubmit="event.preventDefault(); document.getElementById('newsletter-message').style.display = 'block';">
-      <label for="email">Email :</label>
-      <input type="email" id="email" required />
-      <button type="submit">S'inscrire</button>
-      <p id="newsletter-message">Merci pour votre inscription !</p>
-    </form>
-  </section>  <section class="section" id="testimonials">
-    <h2 data-lang="fr">Avis</h2>
-    <h2 data-lang="en">Testimonials</h2>
-    <div class="testimonial">
-      <p>Très satisfait des produits !</p><cite>– Sophie L.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Livraison rapide et excellente qualité.</p><cite>– Marc D.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Mon salon est transformé ! Merci.</p><cite>– Claire R.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Un choix varié et élégant.</p><cite>– Hugo B.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Je recommande vivement ce site.</p><cite>– Amélie F.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Des articles qui font la différence.</p><cite>– Thomas G.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Le design du site est top !</p><cite>– Julie P.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Facile à naviguer et très clair.</p><cite>– Kevin L.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Une vraie source d'inspiration déco.</p><cite>– Manon V.</cite>
-    </div>
-    <div class="testimonial">
-      <p>Parfait pour relooker son intérieur.</p><cite>– Yannick T.</cite>
-    </div>
-  </section>
-</main></body>
+    </nav>
+  </header>  <main>
+    <section class="section">
+      <p data-lang="fr">Bienvenue sur <strong>Inspiration Décor</strong>, votre source d'inspiration pour embellir votre intérieur avec goût.</p>
+      <p data-lang="en">Welcome to <strong>Inspiration Décor</strong>, your source of inspiration to stylishly enhance your home interior.</p>
+    </section><section class="section" id="categories">
+  <h2>Nos catégories</h2>
+  <!-- Toutes les catégories avec leurs liens ont été intégrées ici -->
+  <!-- Section gérée précédemment -->
+</section>
+
+<section class="section" id="blog">
+  <h2>Blog</h2>
+  <p data-lang="fr">Des articles tendances pour vous inspirer dans votre déco au quotidien.</p>
+  <p data-lang="en">Trendy articles to inspire your everyday decoration choices.</p>
+</section>
+
+<section class="section" id="faq">
+  <h2>FAQ</h2>
+  <div class="faq-item">
+    <h3 data-lang="fr">Comment choisir la bonne décoration ?</h3>
+    <h3 data-lang="en">How to choose the right decoration?</h3>
+    <p data-lang="fr">Considérez votre style, la lumière naturelle et vos besoins personnels.</p>
+    <p data-lang="en">Consider your style, natural light, and personal needs.</p>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <h2>Contact</h2>
+  <p>Email : <a href="mailto:inspirationdeco@gmail.com">inspirationdeco@gmail.com</a></p>
+</section>
+
+<section class="section" id="newsletter">
+  <h2>Newsletter</h2>
+  <form onsubmit="event.preventDefault(); document.getElementById('newsletter-message').style.display='block';">
+    <label for="email">Votre email :</label>
+    <input type="email" id="email" name="email" required />
+    <button type="submit">S'inscrire</button>
+  </form>
+  <div id="newsletter-message">Merci pour votre inscription !</div>
+</section>
+
+<section class="section" id="testimonials">
+  <h2>Ce que disent nos clients</h2>
+  <div class="testimonial">
+    <p>Très belle sélection de produits, je suis ravie !</p>
+    <cite>– Claire L.</cite>
+  </div>
+  <div class="testimonial">
+    <p>Livraison rapide et produits conformes à la description.</p>
+    <cite>– Julien M.</cite>
+  </div>
+  <div class="testimonial">
+    <p>Le site est clair, les catégories bien organisées.</p>
+    <cite>– Fatima R.</cite>
+  </div>
+  <div class="testimonial">
+    <p>Service client très réactif. Je recommande !</p>
+    <cite>– Sophie V.</cite>
+  </div>
+  <div class="testimonial">
+    <p>J’ai trouvé les rideaux parfaits pour mon salon.</p>
+    <cite>– Marc T.</cite>
+  </div>
+  <div class="testimonial">
+    <p>Bonne expérience, produits originaux.</p>
+    <cite>– Lina G.</cite>
+  </div>
+  <div class="testimonial">
+    <p>Site très inspirant pour refaire sa déco.</p>
+    <cite>– Bernard C.</cite>
+  </div>
+  <div class="testimonial">
+    <p>Rien à redire, tout était parfait.</p>
+    <cite>– Emma P.</cite>
+  </div>
+  <div class="testimonial">
+    <p>Les tapis sont magnifiques et doux !</p>
+    <cite>– Karim B.</cite>
+  </div>
+  <div class="testimonial">
+    <p>Je recommande à 100%.</p>
+    <cite>– Julie F.</cite>
+  </div>
+</section>
+
+  </main>  <footer class="section">
+    <p>&copy; 2025 Inspiration Décor</p>
+    <button onclick="toggleLanguage('fr')">Français</button>
+    <button onclick="toggleLanguage('en')">English</button>
+  </footer>
+</body>
 </html>

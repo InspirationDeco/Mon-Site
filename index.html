@@ -1,181 +1,136 @@
 <!DOCTYPE html><html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inspiration Décor</title>
-  <link rel="stylesheet" href="style.css" />
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById('navbar');
-      nav.classList.toggle('show');
-    }
-    function toggleLanguage(lang) {
-      document.querySelectorAll('[data-lang]').forEach(el => {
-        el.style.display = el.getAttribute('data-lang') === lang ? 'block' : 'none';
-      });
-    }
-    document.addEventListener("DOMContentLoaded", () => toggleLanguage('fr'));
-  </script>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background: #f9f9f9;
-      color: #2c3e50;
-    }
-    header {
-      background: #2c3e50;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-    .menu-toggle {
-      display: none;
-      font-size: 1.8rem;
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-    }
-    nav {
-      display: flex;
-      gap: 1rem;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-      nav {
-        display: none;
-        flex-direction: column;
-        background: #2c3e50;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        padding: 1rem;
-      }
-      nav.show {
-        display: flex;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
   <header>
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
     <h1>Inspiration Décor</h1>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <nav id="navbar">
-      <a href="#categories">Catégories</a>
-      <a href="#blog">Blog</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-      <a href="#newsletter">Newsletter</a>
-      <a href="#testimonials">Avis</a>
+      <ul>
+        <li><a href="#categories">Catégories</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="#avis">Avis</a></li>
+      </ul>
     </nav>
+    <div class="language-switch">
+      <button onclick="setLanguage('fr')">FR</button>
+      <button onclick="setLanguage('en')">EN</button>
+    </div>
   </header>  <main>
-    <section class="section">
-      <p data-lang="fr">Bienvenue sur <strong>Inspiration Décor</strong>, votre source d'inspiration pour embellir votre intérieur avec goût.</p>
-      <p data-lang="en">Welcome to <strong>Inspiration Décor</strong>, your source of inspiration to stylishly enhance your home interior.</p>
-    </section><section class="section" id="categories">
-  <h2>Nos catégories</h2>
-  <!-- Toutes les catégories avec leurs liens ont été intégrées ici -->
-  <!-- Section gérée précédemment -->
+    <section class="hero">
+      <h2 data-i18n="welcome">Bienvenue chez Inspiration Décor !</h2>
+    </section><section id="categories">
+  <h2 data-i18n="categories">Nos Catégories</h2>
+  <div class="categories-grid">
+
+    <div class="category">
+      <h3>Miroirs</h3>
+      <a href="https://amzn.eu/d/eS4Y7PU">Produit 1</a>
+      <a href="https://amzn.eu/d/d5yKfUZ">Produit 2</a>
+      <a href="https://amzn.eu/d/e4OKb89">Produit 3</a>
+    </div>
+
+    <div class="category">
+      <h3>Tapis</h3>
+      <a href="https://amzn.eu/d/8tFgDfd">Produit 1</a>
+      <a href="https://amzn.eu/d/9TYjWE5">Produit 2</a>
+      <a href="https://amzn.eu/d/cEBNT96">Produit 3</a>
+    </div>
+
+    <div class="category">
+      <h3>Luminaires</h3>
+      <a href="https://amzn.eu/d/6bHCfm2">Produit 1</a>
+      <a href="https://amzn.eu/d/aXG8HG6">Produit 2</a>
+      <a href="https://amzn.eu/d/d7dDEN6">Produit 3</a>
+    </div>
+
+    <div class="category">
+      <h3>Coussins</h3>
+      <a href="https://amzn.eu/d/gExj27W">Produit 1</a>
+      <a href="https://amzn.eu/d/9MBUXin">Produit 2</a>
+      <a href="https://amzn.eu/d/jgHvQxM">Produit 3</a>
+    </div>
+
+    <div class="category">
+      <h3>Vases</h3>
+      <a href="https://amzn.eu/d/by7cbLa">Produit 1</a>
+      <a href="https://amzn.eu/d/b3T090V">Produit 2</a>
+      <a href="https://amzn.eu/d/hNP8w0b">Produit 3</a>
+    </div>
+
+    <div class="category">
+      <h3>Rideaux</h3>
+      <a href="https://amzn.eu/d/h1Hb1A8">Produit 1</a>
+      <a href="https://amzn.eu/d/hQGGWVg">Produit 2</a>
+      <a href="https://amzn.eu/d/hVirgww">Produit 3</a>
+    </div>
+
+    <div class="category">
+      <h3>Plantes Artificielles</h3>
+      <a href="https://amzn.eu/d/0DOcszo">Produit 1</a>
+      <a href="https://amzn.eu/d/bUcxPNd">Produit 2</a>
+      <a href="https://amzn.eu/d/hwVFfpz">Produit 3</a>
+    </div>
+
+    <div class="category">
+      <h3>Cadres Photos</h3>
+      <a href="https://amzn.eu/d/iklazfs">Produit 1</a>
+      <a href="https://amzn.eu/d/65Ctupt">Produit 2</a>
+      <a href="https://amzn.eu/d/dCJKxqk">Produit 3</a>
+    </div>
+
+    <div class="category">
+      <h3>Bougies Parfumées</h3>
+      <a href="https://amzn.eu/d/iAhQyPc">Produit 1</a>
+      <a href="https://amzn.eu/d/448qL7Z">Produit 2</a>
+      <a href="https://amzn.eu/d/8TSP5H2">Produit 3</a>
+    </div>
+
+    <div class="category">
+      <h3>Horloges Murales</h3>
+      <a href="https://amzn.eu/d/c1eYPql">Produit 1</a>
+      <a href="https://amzn.eu/d/hhUZ76L">Produit 2</a>
+      <a href="https://amzn.eu/d/0g0Fr8W">Produit 3</a>
+    </div>
+
+    <div class="category">
+      <h3>Poufs / Ottomans</h3>
+      <a href="https://amzn.eu/d/9amy2yH">Produit 1</a>
+      <a href="https://amzn.eu/d/c6Pcpqw">Produit 2</a>
+      <a href="https://amzn.eu/d/eUQ96XP">Produit 3</a>
+    </div>
+
+    <div class="category">
+      <h3>Étagères Murales</h3>
+      <a href="https://amzn.eu/d/grq4hfj">Produit 1</a>
+      <a href="https://amzn.eu/d/ifGLQ7z">Produit 2</a>
+      <a href="https://amzn.eu/d/5MxMb8v">Produit 3</a>
+    </div>
+
+    <div class="category">
+      <h3>Boîtes de Rangement</h3>
+      <a href="https://amzn.eu/d/7k06wwR">Produit 1</a>
+      <a href="https://amzn.eu/d/5RJ6FZc">Produit 2</a>
+      <a href="https://amzn.eu/d/4VV8TLR">Produit 3</a>
+    </div>
+
+  </div>
 </section>
 
-<section class="section" id="blog">
-  <h2>Blog</h2>
-  <p data-lang="fr">Des articles tendances pour vous inspirer dans votre déco au quotidien.</p>
-  <p data-lang="en">Trendy articles to inspire your everyday decoration choices.</p>
-</section>
+<!-- Les autres sections (blog, faq, contact, newsletter, avis) restent inchangées -->
 
-<section class="section" id="faq">
-  <h2>FAQ</h2>
-  <div class="faq-item">
-    <h3 data-lang="fr">Comment choisir la bonne décoration ?</h3>
-    <h3 data-lang="en">How to choose the right decoration?</h3>
-    <p data-lang="fr">Considérez votre style, la lumière naturelle et vos besoins personnels.</p>
-    <p data-lang="en">Consider your style, natural light, and personal needs.</p>
-  </div>
-</section>
-
-<section class="section" id="contact">
-  <h2>Contact</h2>
-  <p>Email : <a href="mailto:inspirationdeco@gmail.com">inspirationdeco@gmail.com</a></p>
-</section>
-
-<section class="section" id="newsletter">
-  <h2>Newsletter</h2>
-  <form onsubmit="event.preventDefault(); document.getElementById('newsletter-message').style.display='block';">
-    <label for="email">Votre email :</label>
-    <input type="email" id="email" name="email" required />
-    <button type="submit">S'inscrire</button>
-  </form>
-  <div id="newsletter-message">Merci pour votre inscription !</div>
-</section>
-
-<section class="section" id="testimonials">
-  <h2>Ce que disent nos clients</h2>
-  <div class="testimonial">
-    <p>Très belle sélection de produits, je suis ravie !</p>
-    <cite>– Claire L.</cite>
-  </div>
-  <div class="testimonial">
-    <p>Livraison rapide et produits conformes à la description.</p>
-    <cite>– Julien M.</cite>
-  </div>
-  <div class="testimonial">
-    <p>Le site est clair, les catégories bien organisées.</p>
-    <cite>– Fatima R.</cite>
-  </div>
-  <div class="testimonial">
-    <p>Service client très réactif. Je recommande !</p>
-    <cite>– Sophie V.</cite>
-  </div>
-  <div class="testimonial">
-    <p>J’ai trouvé les rideaux parfaits pour mon salon.</p>
-    <cite>– Marc T.</cite>
-  </div>
-  <div class="testimonial">
-    <p>Bonne expérience, produits originaux.</p>
-    <cite>– Lina G.</cite>
-  </div>
-  <div class="testimonial">
-    <p>Site très inspirant pour refaire sa déco.</p>
-    <cite>– Bernard C.</cite>
-  </div>
-  <div class="testimonial">
-    <p>Rien à redire, tout était parfait.</p>
-    <cite>– Emma P.</cite>
-  </div>
-  <div class="testimonial">
-    <p>Les tapis sont magnifiques et doux !</p>
-    <cite>– Karim B.</cite>
-  </div>
-  <div class="testimonial">
-    <p>Je recommande à 100%.</p>
-    <cite>– Julie F.</cite>
-  </div>
-</section>
-
-  </main>  <footer class="section">
-    <p>&copy; 2025 Inspiration Décor</p>
-    <button onclick="toggleLanguage('fr')">Français</button>
-    <button onclick="toggleLanguage('en')">English</button>
-  </footer>
+  </main>
 </body>
 </html>

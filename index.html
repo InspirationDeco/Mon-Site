@@ -63,6 +63,18 @@
       border-radius: 4px;
       margin: 0.5rem 0;
     }
+    .hidden {
+      display: none;
+    }
+    .blue-button {
+      background-color: #007BFF;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 1rem 0;
+    }
     .testimonial {
       background: white;
       padding: 1rem;
@@ -82,10 +94,6 @@
       color: white;
       padding: 0.5rem;
       border: none;
-      cursor: pointer;
-    }
-    .lang-toggle {
-      margin-top: 1rem;
       cursor: pointer;
     }
     @media (max-width: 768px) {
@@ -118,68 +126,100 @@
       <a href="#newsletter">Newsletter</a>
       <a href="#avis">Avis</a>
     </nav>
-  </header>  <section class="section">
-    <h2>Bienvenue sur Inspiration Shopping</h2>
-    <p>Découvrez une variété de produits pour votre maison, votre style de vie et vos besoins technologiques.</p>
-  </section>  <!-- Maison & Décoration -->  <section class="section" id="categories">
+  </header>  <section class="section" id="categories">
     <h2>Maison & Décoration</h2>
-    <div class="categories-grid">
-      <!-- ... Contenu actuel copié tel quel ici ... -->
+    <button class="blue-button" onclick="document.getElementById('deco-section').classList.toggle('hidden')">Accédez ici aux produits de décoration</button>
+    <div id="deco-section" class="hidden">
+      <h3>Nos catégories de maison et décoration</h3>
+      <div class="categories-grid">
+        <div class="category-card">
+          <h3>Miroirs</h3>
+          <img src="https://i.postimg.cc/jWT5Y655/61-E-q-At-DQj-L-AC-SL1500-1.jpg" alt="Miroirs">
+          <a href="https://amzn.eu/d/eS4Y7PU">Produit 1</a><br>
+          <a href="https://amzn.eu/d/d5yKfUZ">Produit 2</a><br>
+          <a href="https://amzn.eu/d/e4OKb89">Produit 3</a>
+        </div>
+        <div class="category-card">
+          <h3>Tapis</h3>
+          <img src="https://i.postimg.cc/Nyx0sy9x/71yuk-AUDVi-L-AC-SL1500.jpg" alt="Tapis">
+          <a href="https://amzn.eu/d/8tFgDfd">Produit 1</a><br>
+          <a href="https://amzn.eu/d/9TYjWE5">Produit 2</a><br>
+          <a href="https://amzn.eu/d/cEBNT96">Produit 3</a>
+        </div>
+        <div class="category-card">
+          <h3>Luminaires</h3>
+          <img src="https://i.postimg.cc/7Pn2HRHd/61-GMvm-g-PL-AC-SL1500.jpg" alt="Luminaire">
+          <a href="https://amzn.eu/d/6bHCfm2">Produit 1</a><br>
+          <a href="https://amzn.eu/d/aXG8HG6">Produit 2</a><br>
+          <a href="https://amzn.eu/d/d7dDEN6">Produit 3</a>
+        </div>
+        <div class="category-card">
+          <h3>Coussins</h3>
+          <img src="https://i.postimg.cc/VJn6hZzp/61b-ICn-Gs-JML-AC-SL1500.jpg" alt="Coussins">
+          <a href="https://amzn.eu/d/gExj27W">Produit 1</a><br>
+          <a href="https://amzn.eu/d/9MBUXin">Produit 2</a><br>
+          <a href="https://amzn.eu/d/jgHvQxM">Produit 3</a>
+        </div>
+        <div class="category-card">
+          <h3>Vases</h3>
+          <img src="https://i.postimg.cc/6yDqYxxC/91-Yblseu-j-L-AC-SX679.jpg" alt="Vases">
+          <a href="https://amzn.eu/d/by7cbLa">Produit 1</a><br>
+          <a href="https://amzn.eu/d/b3T090V">Produit 2</a><br>
+          <a href="https://amzn.eu/d/hNP8w0b">Produit 3</a>
+        </div>
+        <!-- ... les autres catégories à insérer ici ... -->
+      </div>
     </div>
-  </section>  <!-- Électronique -->  <section class="section">
+  </section>  <section class="section">
     <h2>Électronique</h2>
     <div class="categories-grid">
+      <!-- Exemples de catégories électroniques -->
       <div class="category-card">
         <h3>Smartphones</h3>
         <img src="https://i.postimg.cc/y8ZVqN4z/smartphone.jpg" alt="Smartphone">
-        <div>
-          <a href="#">Produit 1</a><br>
-          <a href="#">Produit 2</a><br>
-          <a href="#">Produit 3</a>
-        </div>
+        <a href="#">Produit 1</a><br>
+        <a href="#">Produit 2</a><br>
+        <a href="#">Produit 3</a>
       </div>
       <div class="category-card">
         <h3>Ordinateurs</h3>
         <img src="https://i.postimg.cc/Y2FWY2fQ/laptop.jpg" alt="Ordinateur">
-        <div>
-          <a href="#">Produit 1</a><br>
-          <a href="#">Produit 2</a><br>
-          <a href="#">Produit 3</a>
-        </div>
-      </div>
-      <div class="category-card">
-        <h3>Téléviseurs</h3>
-        <img src="https://i.postimg.cc/LsMJ1Jt9/tv.jpg" alt="TV">
-        <div>
-          <a href="#">Produit 1</a><br>
-          <a href="#">Produit 2</a><br>
-          <a href="#">Produit 3</a>
-        </div>
+        <a href="#">Produit 1</a><br>
+        <a href="#">Produit 2</a><br>
+        <a href="#">Produit 3</a>
       </div>
     </div>
-  </section>  <!-- Ustensiles & Électroménager -->  <section class="section">
+  </section>  <section class="section">
     <h2>Ustensiles Cuisine & Électroménager</h2>
     <div class="categories-grid">
       <div class="category-card">
         <h3>Appareils de cuisine</h3>
         <img src="https://i.postimg.cc/XvQYFtwn/mixer.jpg" alt="Appareils de cuisine">
-        <div>
-          <a href="#">Produit 1</a><br>
-          <a href="#">Produit 2</a><br>
-          <a href="#">Produit 3</a>
-        </div>
-      </div>
-      <div class="category-card">
-        <h3>Ustensiles</h3>
-        <img src="https://i.postimg.cc/d3rxtZxq/ustensiles.jpg" alt="Ustensiles">
-        <div>
-          <a href="#">Produit 1</a><br>
-          <a href="#">Produit 2</a><br>
-          <a href="#">Produit 3</a>
-        </div>
+        <a href="#">Produit 1</a><br>
+        <a href="#">Produit 2</a><br>
+        <a href="#">Produit 3</a>
       </div>
     </div>
-  </section>  <!-- Le reste du site (avis, blog, FAQ, contact, etc.) reste inchangé -->  <!-- ... -->  <script>
-    function toggleLang() {
-      const html = document.documentElement;
-      html.lang = html.lang ===
+  </section>  <section class="section" id="avis">
+    <h2>Avis</h2>
+    <div class="testimonial">Super site avec plein de bonnes idées !</div>
+    <div class="testimonial">Livraison rapide et produits conformes.</div>
+  </section>  <section class="section" id="contact">
+    <h2>Contact</h2>
+    <form>
+      <input type="text" placeholder="Nom" required>
+      <input type="email" placeholder="Email" required>
+      <textarea placeholder="Message" rows="5" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>  <section class="section" id="newsletter">
+    <h2>Newsletter</h2>
+    <p>Inscrivez-vous pour recevoir nos dernières nouveautés :</p>
+    <form>
+      <input type="email" placeholder="Votre email" required>
+      <button type="submit">S'inscrire</button>
+    </form>
+  </section>  <script>
+    // Toggle handled by inline onclick
+  </script></body>
+</html>

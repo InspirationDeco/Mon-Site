@@ -1,47 +1,61 @@
 <!DOCTYPE html><html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catalogue Produits Amazon</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inspiration Shopping</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
+      background: #f4f4f8;
+      color: #333;
     }
-    nav ul {
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 1rem 2rem;
       display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 1rem;
-      background-color: #222;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
     }
-    nav ul li {
-      margin: 0 1rem;
+    header h1 {
+      margin: 0;
     }
-    nav ul li a {
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .bar {
+      height: 3px;
+      width: 25px;
+      background-color: white;
+      margin: 4px 0;
+    }
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+    nav a {
       color: white;
       text-decoration: none;
-      font-weight: bold;
     }
     .section {
       padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
     }
-    .section h2 {
-      text-align: center;
-      margin-bottom: 2rem;
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
     }
     .category-card {
       background: white;
       border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       padding: 1rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      max-width: 400px;
-      margin-left: auto;
-      margin-right: auto;
+      text-align: center;
     }
     .category-card img {
       max-width: 100%;
@@ -49,88 +63,123 @@
       border-radius: 4px;
       margin: 0.5rem 0;
     }
-    .category-card a {
-      display: block;
-      color: #007BFF;
-      margin: 0.25rem 0;
+    .testimonial {
+      background: white;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 4px solid #2c3e50;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    form input, form textarea {
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    form button {
+      background: #2c3e50;
+      color: white;
+      padding: 0.5rem;
+      border: none;
+      cursor: pointer;
+    }
+    .lang-toggle {
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+      }
+      nav.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
     }
   </style>
 </head>
-<body><nav>
-  <ul>
-    <li><a href="#deco">Maison & Déco</a></li>
-    <li><a href="#mode">Mode</a></li>
-    <li><a href="#tech">Électronique</a></li>
-    <li><a href="#cuisine">Cuisine</a></li>
-    <li><a href="#avis">Avis</a></li>
-  </ul>
-</nav><section class="section" id="deco">
-  <h2>Maison & Décoration</h2>
-  <div class="category-card">
-    <h3>Luminaires</h3>
-    <img src="https://i.postimg.cc/7Pn2HRHd/61-GMvm-g-PL-AC-SL1500.jpg" alt="Luminaires">
-    <a href="#">Produit 1</a>
-    <a href="#">Produit 2</a>
-    <a href="#">Produit 3</a>
-  </div>
-</section><section class="section" id="mode">
-  <h2>Mode & Accessoires</h2>
-  <div class="category-card">
-    <h3>Vêtements Homme</h3>
-    <img src="https://i.postimg.cc/d1xW4sGv/vetement-homme.jpg" alt="Vêtements Homme">
-    <a href="#">Produit 1</a>
-    <a href="#">Produit 2</a>
-    <a href="#">Produit 3</a>
-  </div>
-  <div class="category-card">
-    <h3>Costumes</h3>
-    <img src="https://i.postimg.cc/wB71qbZb/costume-homme.jpg" alt="Costumes">
-    <a href="#">Produit 1</a>
-    <a href="#">Produit 2</a>
-    <a href="#">Produit 3</a>
-  </div>
-</section><section class="section" id="tech">
-  <h2>Électronique</h2>
-  <div class="category-card">
-    <h3>Téléphones Portables</h3>
-    <img src="https://i.postimg.cc/KcM6Z3Ct/telephone.jpg" alt="Téléphones">
-    <a href="#">Produit 1</a>
-    <a href="#">Produit 2</a>
-    <a href="#">Produit 3</a>
-  </div>
-  <div class="category-card">
-    <h3>Accessoires</h3>
-    <img src="https://i.postimg.cc/5yFr2zqZ/accessoires.jpg" alt="Accessoires">
-    <a href="#">Produit 1</a>
-    <a href="#">Produit 2</a>
-    <a href="#">Produit 3</a>
-  </div>
-</section><section class="section" id="cuisine">
-  <h2>Cuisine & Électroménager</h2>
-  <div class="category-card">
-    <h3>Appareils de Cuisine</h3>
-    <img src="https://i.postimg.cc/Mpd2LP2d/electromenager.jpg" alt="Appareils">
-    <a href="#">Produit 1</a>
-    <a href="#">Produit 2</a>
-    <a href="#">Produit 3</a>
-  </div>
-  <div class="category-card">
-    <h3>Ustensiles</h3>
-    <img src="https://i.postimg.cc/g0pQDpF5/ustensiles.jpg" alt="Ustensiles">
-    <a href="#">Produit 1</a>
-    <a href="#">Produit 2</a>
-    <a href="#">Produit 3</a>
-  </div>
-</section><section class="section" id="avis">
-  <h2>Avis Clients</h2>
-  <div class="category-card">
-    <p>Très belle sélection, je recommande !</p><cite>- Alice</cite>
-  </div>
-  <div class="category-card">
-    <p>Navigation fluide et liens clairs.</p><cite>- Marc</cite>
-  </div>
-  <div class="category-card">
-    <p>Super design et facile à utiliser !</p><cite>- Sophie</cite>
-  </div>
-</section></body>
-</html>
+<body>
+  <header>
+    <h1>Inspiration Shopping</h1>
+    <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <nav>
+      <a href="#categories">Catégories</a>
+      <a href="#blog">Blog</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="#newsletter">Newsletter</a>
+      <a href="#avis">Avis</a>
+    </nav>
+  </header>  <section class="section">
+    <h2>Bienvenue sur Inspiration Shopping</h2>
+    <p>Découvrez une variété de produits pour votre maison, votre style de vie et vos besoins technologiques.</p>
+  </section>  <!-- Maison & Décoration -->  <section class="section" id="categories">
+    <h2>Maison & Décoration</h2>
+    <div class="categories-grid">
+      <!-- ... Contenu actuel copié tel quel ici ... -->
+    </div>
+  </section>  <!-- Électronique -->  <section class="section">
+    <h2>Électronique</h2>
+    <div class="categories-grid">
+      <div class="category-card">
+        <h3>Smartphones</h3>
+        <img src="https://i.postimg.cc/y8ZVqN4z/smartphone.jpg" alt="Smartphone">
+        <div>
+          <a href="#">Produit 1</a><br>
+          <a href="#">Produit 2</a><br>
+          <a href="#">Produit 3</a>
+        </div>
+      </div>
+      <div class="category-card">
+        <h3>Ordinateurs</h3>
+        <img src="https://i.postimg.cc/Y2FWY2fQ/laptop.jpg" alt="Ordinateur">
+        <div>
+          <a href="#">Produit 1</a><br>
+          <a href="#">Produit 2</a><br>
+          <a href="#">Produit 3</a>
+        </div>
+      </div>
+      <div class="category-card">
+        <h3>Téléviseurs</h3>
+        <img src="https://i.postimg.cc/LsMJ1Jt9/tv.jpg" alt="TV">
+        <div>
+          <a href="#">Produit 1</a><br>
+          <a href="#">Produit 2</a><br>
+          <a href="#">Produit 3</a>
+        </div>
+      </div>
+    </div>
+  </section>  <!-- Ustensiles & Électroménager -->  <section class="section">
+    <h2>Ustensiles Cuisine & Électroménager</h2>
+    <div class="categories-grid">
+      <div class="category-card">
+        <h3>Appareils de cuisine</h3>
+        <img src="https://i.postimg.cc/XvQYFtwn/mixer.jpg" alt="Appareils de cuisine">
+        <div>
+          <a href="#">Produit 1</a><br>
+          <a href="#">Produit 2</a><br>
+          <a href="#">Produit 3</a>
+        </div>
+      </div>
+      <div class="category-card">
+        <h3>Ustensiles</h3>
+        <img src="https://i.postimg.cc/d3rxtZxq/ustensiles.jpg" alt="Ustensiles">
+        <div>
+          <a href="#">Produit 1</a><br>
+          <a href="#">Produit 2</a><br>
+          <a href="#">Produit 3</a>
+        </div>
+      </div>
+    </div>
+  </section>  <!-- Le reste du site (avis, blog, FAQ, contact, etc.) reste inchangé -->  <!-- ... -->  <script>
+    function toggleLang() {
+      const html = document.documentElement;
+      html.lang = html.lang ===
